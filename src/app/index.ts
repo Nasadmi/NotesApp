@@ -18,6 +18,8 @@ import * as path from 'node:path'
 
 import { db } from '../lib/db'
 
+import { indexRoutes } from '../router/index.routes'
+
 const app = express()
 
 const scssFolder = path.join(__dirname, '..', '..', 'scss')
@@ -27,6 +29,8 @@ config()
 app.use(express.urlencoded({ extended: false }))
 
 app.use(express.json())
+
+app.disable('x-powered-by')
 
 app.use(session({
   secret: process.env.SESSION_SECRET as string,
@@ -74,7 +78,9 @@ app.set('views', path.join(__dirname, '..', '..', 'views'))
 
 app.set('view engine', 'ejs')
 
-app.use(express.static(path.join(__dirname, '..', '..', 'public')))
+app.use('/resources', express.static(path.join(__dirname, '..', '..', 'public')))
+
+app.use(indexRoutes)
 
 app.set('port', parseInt(process.env.PORT as string))
 
