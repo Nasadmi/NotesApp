@@ -1,0 +1,47 @@
+@import './global';
+
+$first: #222831;
+
+$second: #393E46;
+
+$third: #00ADB5;
+
+$fourth: #EEEEEE;
+
+.dark {
+    color: $first;
+}
+
+.dark-bg {
+    background-color: $first;
+}
+
+.semi-dark {
+    color: $second;
+}
+
+.semi-dark-bg {
+    background-color: $second;
+}
+
+.semi-light {
+    color: $third;
+}
+
+.semi-light-bg {
+    background-color: $third;
+}
+
+.light {
+    color: $fourth;
+}
+
+.light-bg {
+    background-color: $fourth;
+}
+
+html,
+body,
+:root {
+    background-color: $first;
+}
