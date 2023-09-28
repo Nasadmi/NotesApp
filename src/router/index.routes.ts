@@ -17,7 +17,24 @@ router.get('/', (req, res, next) => {
   }
   res.render('index', {
     title: TITLE,
-    root: th.css
+    root: th.css,
+    content: 'home'
+  })
+})
+
+router.get('/register', (req, res, next) => {
+  const th = theme(req.cookies.theme)
+  if (req.cookies.theme === undefined) {
+    res.cookie('theme', th.type).render('index', {
+      title: TITLE,
+      root: th.css
+    })
+    return
+  }
+  res.render('index', {
+    title: TITLE,
+    root: th.css,
+    content: 'register'
   })
 })
 
